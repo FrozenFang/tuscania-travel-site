@@ -1,0 +1,18 @@
+@import '../../GlobalStyles/variables';
+
+.media{
+    position: relative;
+    height: 100vh;
+    background-size: cover;
+    filter: brightness(80%) saturate(120%);
+}
+.no-padding{
+    padding: 0 !important;
+}
+
+@media only screen and (max-width: 1200px) {
+    .media{
+        height: 30vh;
+        background-position: center;
+    }
+}

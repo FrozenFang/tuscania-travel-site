@@ -1,0 +1,70 @@
+@import "../../GlobalStyles/variables";
+.navi {
+  position: absolute;
+  right: -14rem;
+  top: 45%;
+  transform: rotate(-90deg);
+  &--list {
+    display: inline-flex;
+    list-style: none;
+    &--item {
+      padding-right: 2rem;
+      padding-left: 2rem;
+      &--link {
+        color: #fff;
+        opacity: 0.4;
+        text-decoration: none;
+        font-size: $menuSize;
+      }
+      &:after {
+        background-color: #fff;
+        opacity: 0.4;
+        content: "";
+        display: inline-block;
+        height: 5px;
+        position: relative;
+        vertical-align: middle;
+        width: 100%;
+      }
+      .active {
+        padding-right: 2rem;
+        padding-left: 2rem;
+        color: #fff;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .navi{
+    top: 5%;
+    right: auto;
+    transform: rotate(0deg);
+    &--list {
+      display: flex;
+      flex-direction:row-reverse;
+      justify-content: space-between;
+      &--item {
+        &--link {
+          color: #fff;
+          opacity: 0.4;
+          text-decoration: none;
+          font-size: $menuSize;
+        }
+        &:after {
+          background-color: #fff;
+          opacity: 0;
+          display: inline-block;
+          height: 0px;
+        }
+        .active {
+          padding-left: 0;
+          padding-right: 0;
+          color: #fff;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

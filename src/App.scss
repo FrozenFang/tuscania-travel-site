@@ -1,0 +1,11 @@
+@import "./GlobalStyles/variables";
+@import "./GlobalStyles/base";
+@import "./GlobalStyles/grid";
+
+.app {
+    height: 100vh;
+}
+
+.no-padding {
+    padding: 0;
+}

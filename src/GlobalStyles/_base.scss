@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;1,600&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+    --default-serif-font: 'Crimson Text', serif;
+    --default-sans-font: 'Roboto', sans-serif;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+  }
+  
+  html {
+    box-sizing: border-box;
+    font-size: 62.5% // 1rem = 10px // 10 / 16 = 62.5;
+  }
+  
+  body {
+    font-size: 1.6rem;
+    font-family: var(--default-sans-font);
+    overscroll-behavior-y: none;
+    overflow: hidden;
+  }
+  
+  .child {
+    padding: 2.6rem;
+  }
+
+  .content{
+    height: calc(100vh - 5.2rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 15%;
+    &--logo{
+        max-width: 14.8rem;
+        max-height: 4.8rem;
+    }
+    &--wrapper{
+        &--subtitle{
+            font-size: $subtitleSize;
+            font-style: italic;
+            color: $primaryColor;
+            text-transform: uppercase;
+            font-weight: 100;
+        }
+        &--title{
+            font-size: $titleSize;
+            font-family: var(--default-serif-font);
+            color: $textDarkColor;
+            text-transform: uppercase;
+            line-height: 8rem;
+            letter-spacing: 0.07em;
+            font-weight: 100;
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        &--description{
+            font-size: $descriptionSize;
+            color: $textDarkColor;
+            padding-bottom: 2rem;
+            max-width: 60ch;
+        }
+        &--button{
+          width: 26rem;
+          height: 6rem;
+          border: 2px solid $primaryColor;
+          background-color: #fff;
+          color: $primaryColor;
+          font-size: $buttonSize;
+          text-transform: uppercase;
+          font-weight: 700;
+          margin-top: 4rem;
+          transition: 0.3s;
+          &:hover{
+              background-color: $primaryColor;
+              color: #fff;
+              cursor: pointer;
+          }
+      }
+    }
+}
+
+
+
+@media only screen and (max-width: 1455px) {
+  .content{
+    padding-left: 5%;
+  }
+}
+@media only screen and (max-width: 1335px) {
+  .content{
+    padding-left: 2%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  body{
+    overflow-y: scroll;
+  }
+  .content{
+    &--wrapper{
+        &--description{
+            max-width: 100ch;
+        }
+      }
+    }
+}

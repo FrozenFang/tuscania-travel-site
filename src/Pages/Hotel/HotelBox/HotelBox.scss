@@ -1,0 +1,32 @@
+@import '../../../GlobalStyles/variables';
+@import '../../../GlobalStyles/base';
+
+.content{
+    @extend .content;
+    &--images{
+        display: flex;
+        justify-content: space-between;
+        padding-right: 10rem;
+        img{
+            width: 100%;
+            max-width: 20rem;
+            height: auto;
+            padding-right: 0.1rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 1335px) {
+    .content{
+        &--images{
+            padding-right: 5rem;
+            justify-content: flex-start;
+            img{
+                width: 100%;
+                max-width: 18rem;
+                height: auto;
+                padding-right: 1rem;
+            }
+        }
+    }
+  }

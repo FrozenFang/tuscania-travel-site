@@ -1,0 +1,29 @@
+@import '../../../GlobalStyles/variables';
+@import '../../../GlobalStyles/base';
+
+.content{
+    @extend .content;
+    &--perks{
+        list-style: none;
+        display: flex;
+        align-items: flex-start;
+        overflow: hidden;
+        &--item{
+            display: flex;
+            flex-direction: column;
+            margin-right: auto;
+            &--image{
+                max-width: 60px;
+                max-height: 60px;
+                margin: 0 auto;
+            }
+            &--title{
+                margin-top: 2rem;
+                font-size: $buttonSize;
+                font-family: var(--default-serif-font);
+                color: $primaryColor;
+            }
+        }
+    }
+
+}
