@@ -1,5 +1,8 @@
-import { Route, Switch, useLocation } from 'react-router-dom';
-import { AnimatePresence} from "framer-motion";
+import { useEffect, useState, useCallback } from 'react';
+
+import { Route, Switch, useLocation, useHistory } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
+import { AnimatePresence } from "framer-motion";
 
 import './App.scss';
 
@@ -16,22 +19,74 @@ import wineBg from './assets/images/wine.jpg'
 const routes = [
   { path: "/", name: "Home", Component: Home, image: homeBg },
   { path: "/hotel", name: "Hotel", Component: Hotel, image: hotelBg },
-  { path: "/wine", name: "Wine", Component: Wine, image: wineBg },
-  //{ path: "/cuisine", name: "Cuisine", Component: Cuisine, image: wineBg },
+  { path: "/wine", name: "Wine", Component: Wine, image: wineBg }
 ];
 
 function App() {
-
+  const [animationInProgress, setAnimationInProgress] = useState(false);
   const location = useLocation();
+  const history = useHistory();
+
+  const isMobile = useMediaQuery({ query: `(max-width: 1200px)` });
+
+  const goToNextPage = useCallback(() => {
+    const currentRouteIndex = routes.findIndex(
+      ({ path }) => location.pathname === path
+    );
+
+    if (animationInProgress || currentRouteIndex >= routes.length - 1) {
+      return;
+    }
+
+    setAnimationInProgress(true);
+
+    history.push(routes[currentRouteIndex + 1].path)
+  }, [history, location.pathname, animationInProgress]);
+  
+  const goToPrevPage = useCallback(() => {
+    const currentRouteIndex = routes.findIndex(
+      ({ path }) => location.pathname === path
+    );
+
+    if (animationInProgress ||currentRouteIndex <= 0) {
+      return;
+    }
+
+    setAnimationInProgress(true);
+
+    history.push(routes[currentRouteIndex - 1].path)
+  }, [history, location.pathname, animationInProgress]);
+
+  useEffect(() => {
+    console.log({isMobile: isMobile})
+
+    const handleScroll = (event) => {
+      const navigationFunction = event.wheelDelta > 0
+        ? goToPrevPage
+        : goToNextPage;
+
+      navigationFunction();
+    }
+
+    isMobile ? window.removeEventListener('wheel', handleScroll): window.addEventListener('wheel', handleScroll);
+
+    return () => {
+      window.removeEventListener('wheel', handleScroll);
+    };
+  }, [goToPrevPage, goToNextPage, isMobile]);
+
+  const onExitComplete = useCallback(() => {
+    setAnimationInProgress(false)
+  }, []);
 
   return (
     <div className="app">
-      <AnimatePresence exitBeforeEnter initial={false}>
+      <AnimatePresence exitBeforeEnter initial={false} {...{ onExitComplete }}>
         <Switch location={location} key={location.pathname}>
           {routes.map(({ path, Component, image }) => (
             <Route key={path} exact path={path}>
               {({ match }) => (
-                <Component image={image}/>
+                <Component image={image} />
               )}
             </Route>
           ))}
