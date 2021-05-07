@@ -6,4 +6,4 @@ Simple imaginary travel agency website. Built with React, ReactRouter, FramerMot
 
 ## Live Site
 
-[Live Demo](https://epic-franklin-8bfdbc.netlify.app/wine)
+[Live Demo](https://epic-franklin-8bfdbc.netlify.app)
