@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/tuscania-travel-site/static/css/main.f693b5eb.chunk.css",
+    "main.js": "/tuscania-travel-site/static/js/main.a9d2bf17.chunk.js",
+    "main.js.map": "/tuscania-travel-site/static/js/main.a9d2bf17.chunk.js.map",
+    "runtime-main.js": "/tuscania-travel-site/static/js/runtime-main.e545b68c.js",
+    "runtime-main.js.map": "/tuscania-travel-site/static/js/runtime-main.e545b68c.js.map",
+    "static/js/2.24088e82.chunk.js": "/tuscania-travel-site/static/js/2.24088e82.chunk.js",
+    "static/js/2.24088e82.chunk.js.map": "/tuscania-travel-site/static/js/2.24088e82.chunk.js.map",
+    "index.html": "/tuscania-travel-site/index.html",
+    "static/css/main.f693b5eb.chunk.css.map": "/tuscania-travel-site/static/css/main.f693b5eb.chunk.css.map",
+    "static/js/2.24088e82.chunk.js.LICENSE.txt": "/tuscania-travel-site/static/js/2.24088e82.chunk.js.LICENSE.txt",
+    "static/media/002-cityscape.98862cd6.png": "/tuscania-travel-site/static/media/002-cityscape.98862cd6.png",
+    "static/media/003-wine.024c9726.png": "/tuscania-travel-site/static/media/003-wine.024c9726.png",
+    "static/media/bg.7058577d.png": "/tuscania-travel-site/static/media/bg.7058577d.png",
+    "static/media/hotel.9eb2de7d.jpg": "/tuscania-travel-site/static/media/hotel.9eb2de7d.jpg",
+    "static/media/hotel1.e9acbb1a.jpg": "/tuscania-travel-site/static/media/hotel1.e9acbb1a.jpg",
+    "static/media/hotel2.e54c5b95.jpg": "/tuscania-travel-site/static/media/hotel2.e54c5b95.jpg",
+    "static/media/hotel3.8862cb0c.jpg": "/tuscania-travel-site/static/media/hotel3.8862cb0c.jpg",
+    "static/media/wine.ba7bcb8b.jpg": "/tuscania-travel-site/static/media/wine.ba7bcb8b.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e545b68c.js",
+    "static/js/2.24088e82.chunk.js",
+    "static/css/main.f693b5eb.chunk.css",
+    "static/js/main.a9d2bf17.chunk.js"
+  ]
+}
