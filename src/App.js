@@ -27,6 +27,10 @@ function App() {
   const location = useLocation();
   const history = useHistory();
 
+  const Preload = require('react-preload').Preload;
+  const loadingIndicator = (<div>Loading...</div>);
+  const images = [homeBg, hotelBg, wineBg];
+
   const isMobile = useMediaQuery({ query: `(max-width: 1200px)` });
 
   const goToNextPage = useCallback(() => {
@@ -42,13 +46,13 @@ function App() {
 
     history.push(routes[currentRouteIndex + 1].path)
   }, [history, location.pathname, animationInProgress]);
-  
+
   const goToPrevPage = useCallback(() => {
     const currentRouteIndex = routes.findIndex(
       ({ path }) => location.pathname === path
     );
 
-    if (animationInProgress ||currentRouteIndex <= 0) {
+    if (animationInProgress || currentRouteIndex <= 0) {
       return;
     }
 
@@ -58,7 +62,6 @@ function App() {
   }, [history, location.pathname, animationInProgress]);
 
   useEffect(() => {
-    console.log({isMobile: isMobile})
 
     const handleScroll = (event) => {
       const navigationFunction = event.wheelDelta > 0
@@ -68,7 +71,7 @@ function App() {
       navigationFunction();
     }
 
-    isMobile ? window.removeEventListener('wheel', handleScroll): window.addEventListener('wheel', handleScroll);
+    isMobile ? window.removeEventListener('wheel', handleScroll) : window.addEventListener('wheel', handleScroll);
 
     return () => {
       window.removeEventListener('wheel', handleScroll);
@@ -81,18 +84,26 @@ function App() {
 
   return (
     <div className="app">
-      <AnimatePresence exitBeforeEnter initial={false} {...{ onExitComplete }}>
-        <Switch location={location} key={location.pathname}>
-          {routes.map(({ path, Component, image }) => (
-            <Route key={path} exact path={path}>
-              {({ match }) => (
-                <Component image={image} />
-              )}
-            </Route>
-          ))}
-        </Switch>
-      </AnimatePresence>
-      <Navigation></Navigation>
+      <Preload
+        loadingIndicator={loadingIndicator}
+        images={images}
+        autoResolveDelay={3000}
+        resolveOnError={true}
+        mountChildren={true}
+      >
+        <AnimatePresence exitBeforeEnter initial={false} {...{ onExitComplete }}>
+          <Switch location={location} key={location.pathname}>
+            {routes.map(({ path, Component, image }) => (
+              <Route key={path} exact path={path}>
+                {({ match }) => (
+                  <Component image={image} />
+                )}
+              </Route>
+            ))}
+          </Switch>
+        </AnimatePresence>
+        <Navigation></Navigation>
+      </Preload>
     </div>
   );
 }
